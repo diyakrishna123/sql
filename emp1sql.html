@@ -1,0 +1,165 @@
+Enter password: ****
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 11
+Server version: 8.0.19 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2020, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> create database new;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> use new;
+Database changed
+mysql> create table emp(ssn varchar(20),name varchar(20),dept varchar(20),projectname varchar(20),projectlocation varchar(20));
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> insert into emp values("1","diya","hr","abc","kozhikode");
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into emp values("2","tiya","","abc","kozhikode");
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into emp values("3","rifa","finance","food","malapuram");
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into emp values("4","nafi","marketing","design","kannur");
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into emp values("5","krishna","productin","bank","wayanad");
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into emp values("6","arun","finance","solar","goa");
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into emp values("7","manu","marketing","gst","kottayam");
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into emp values("8","chinnu","production","dfs","jamu");
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into emp values("9","aishu","finance","pg","idukki");
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into emp values("10","sam","finance","iot","kerala");
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from emp;
++------+---------+------------+-------------+-----------------+
+| ssn  | name    | dept       | projectname | projectlocation |
++------+---------+------------+-------------+-----------------+
+| 1    | diya    | hr         | abc         | kozhikode       |
+| 2    | tiya    |            | abc         | kozhikode       |
+| 3    | rifa    | finance    | food        | malapuram       |
+| 4    | nafi    | marketing  | design      | kannur          |
+| 5    | krishna | productin  | bank        | wayanad         |
+| 6    | arun    | finance    | solar       | goa             |
+| 7    | manu    | marketing  | gst         | kottayam        |
+| 8    | chinnu  | production | dfs         | jamu            |
+| 9    | aishu   | finance    | pg          | idukki          |
+| 10   | sam     | finance    | iot         | kerala          |
++------+---------+------------+-------------+-----------------+
+10 rows in set (0.00 sec)
+
+mysql> select * from emp order by name;
++------+---------+------------+-------------+-----------------+
+| ssn  | name    | dept       | projectname | projectlocation |
++------+---------+------------+-------------+-----------------+
+| 9    | aishu   | finance    | pg          | idukki          |
+| 6    | arun    | finance    | solar       | goa             |
+| 8    | chinnu  | production | dfs         | jamu            |
+| 1    | diya    | hr         | abc         | kozhikode       |
+| 5    | krishna | productin  | bank        | wayanad         |
+| 7    | manu    | marketing  | gst         | kottayam        |
+| 4    | nafi    | marketing  | design      | kannur          |
+| 3    | rifa    | finance    | food        | malapuram       |
+| 10   | sam     | finance    | iot         | kerala          |
+| 2    | tiya    |            | abc         | kozhikode       |
++------+---------+------------+-------------+-----------------+
+10 rows in set (0.00 sec)
+
+mysql> select * from emp order by name desc;
++------+---------+------------+-------------+-----------------+
+| ssn  | name    | dept       | projectname | projectlocation |
++------+---------+------------+-------------+-----------------+
+| 2    | tiya    |            | abc         | kozhikode       |
+| 10   | sam     | finance    | iot         | kerala          |
+| 3    | rifa    | finance    | food        | malapuram       |
+| 4    | nafi    | marketing  | design      | kannur          |
+| 7    | manu    | marketing  | gst         | kottayam        |
+| 5    | krishna | productin  | bank        | wayanad         |
+| 1    | diya    | hr         | abc         | kozhikode       |
+| 8    | chinnu  | production | dfs         | jamu            |
+| 6    | arun    | finance    | solar       | goa             |
+| 9    | aishu   | finance    | pg          | idukki          |
++------+---------+------------+-------------+-----------------+
+10 rows in set (0.00 sec)
+
+mysql> select * from emp where dept = 'finance' and projectlocation = 'goa';
++------+------+---------+-------------+-----------------+
+| ssn  | name | dept    | projectname | projectlocation |
++------+------+---------+-------------+-----------------+
+| 6    | arun | finance | solar       | goa             |
++------+------+---------+-------------+-----------------+
+1 row in set (0.00 sec)
+
+mysql> alter table emp add salary varchar(10);
+Query OK, 0 rows affected (0.03 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> alter table emp add salary varchar(20);
+ERROR 1060 (42S21): Duplicate column name 'salary'
+mysql> select * from emp;
++------+---------+------------+-------------+-----------------+--------+
+| ssn  | name    | dept       | projectname | projectlocation | salary |
++------+---------+------------+-------------+-----------------+--------+
+| 1    | diya    | hr         | abc         | kozhikode       | NULL   |
+| 2    | tiya    |            | abc         | kozhikode       | NULL   |
+| 3    | rifa    | finance    | food        | malapuram       | NULL   |
+| 4    | nafi    | marketing  | design      | kannur          | NULL   |
+| 5    | krishna | productin  | bank        | wayanad         | NULL   |
+| 6    | arun    | finance    | solar       | goa             | NULL   |
+| 7    | manu    | marketing  | gst         | kottayam        | NULL   |
+| 8    | chinnu  | production | dfs         | jamu            | NULL   |
+| 9    | aishu   | finance    | pg          | idukki          | NULL   |
+| 10   | sam     | finance    | iot         | kerala          | NULL   |
++------+---------+------------+-------------+-----------------+--------+
+10 rows in set (0.00 sec)
+
+mysql> update emp set salary = '30000' where name = 'arun';
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from emp;
++------+---------+------------+-------------+-----------------+--------+
+| ssn  | name    | dept       | projectname | projectlocation | salary |
++------+---------+------------+-------------+-----------------+--------+
+| 1    | diya    | hr         | abc         | kozhikode       | NULL   |
+| 2    | tiya    |            | abc         | kozhikode       | NULL   |
+| 3    | rifa    | finance    | food        | malapuram       | NULL   |
+| 4    | nafi    | marketing  | design      | kannur          | NULL   |
+| 5    | krishna | productin  | bank        | wayanad         | NULL   |
+| 6    | arun    | finance    | solar       | goa             | 30000  |
+| 7    | manu    | marketing  | gst         | kottayam        | NULL   |
+| 8    | chinnu  | production | dfs         | jamu            | NULL   |
+| 9    | aishu   | finance    | pg          | idukki          | NULL   |
+| 10   | sam     | finance    | iot         | kerala          | NULL   |
++------+---------+------------+-------------+-----------------+--------+
+10 rows in set (0.00 sec)
+
+mysql> alter table emp drop salary;
+Query OK, 0 rows affected (0.20 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> alter table emp and salary float(7,2);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'and salary float(7,2)' at line 1
+mysql> alter table emp add salary float(7,2);
+Query OK, 0 rows affected, 1 warning (0.02 sec)
+Records: 0  Duplicates: 0  Warnings: 1
+
+mysql>
